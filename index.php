@@ -40,6 +40,7 @@
 					<ul class="nav navbar-nav">
 						<li><a href="./?chain=<?php echo html($chain)?>">Node</a></li>
 						<li><a href="./?chain=<?php echo html($chain)?>&page=permissions">Permissions</a></li>
+						<li><a href="./?chain=<?php echo html($chain)?>&page=assets">Assets</a></li>
 						<li><a href="./?chain=<?php echo html($chain)?>&page=issue" class="pair-first">Issue Asset</a></li>
 						<li><a href="./?chain=<?php echo html($chain)?>&page=update" class="pair-second">| Update</a></li>
 						<li><a href="./?chain=<?php echo html($chain)?>&page=send">Send</a></li>
@@ -58,6 +59,7 @@
 		switch (@$_GET['page']) {
 			case 'label':
 			case 'permissions':
+			case 'assets':
 			case 'issue':
 			case 'update':
 			case 'send':
