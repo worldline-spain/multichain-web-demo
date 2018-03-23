@@ -173,11 +173,7 @@
 										</tr>
 <?php
 									}
-?>
-									<tr>
-										<th style="width:17%;">Another field</th>
-										<td>Another value</td>
-									</tr>
+?>	
 									<tr>
 										<th>Received</th>
 										<td><?php echo gmdate('Y-m-d H:i:s', $transaction['blocktime'])?> GMT<?php echo isset($transaction['blocktime']) ? ' (confirmed)' : '-'?></td>
