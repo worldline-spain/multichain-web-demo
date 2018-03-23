@@ -44,8 +44,8 @@
 						<li><a href="./?chain=<?php echo html($chain)?>&page=issue" class="pair-first">Issue Asset</a></li>
 						<li><a href="./?chain=<?php echo html($chain)?>&page=update" class="pair-second">| Update</a></li>
 						<li><a href="./?chain=<?php echo html($chain)?>&page=send">Send</a></li>
-						<li><a href="./?chain=<?php echo html($chain)?>&page=offer" class="pair-first">Create Offer</a></li>
-						<li><a href="./?chain=<?php echo html($chain)?>&page=accept" class="pair-second">| Accept</a></li>
+						<!--li><a href="./?chain=<?php echo html($chain)?>&page=offer" class="pair-first">Create Offer</a></li>
+						<li><a href="./?chain=<?php echo html($chain)?>&page=accept" class="pair-second">| Accept</a></li-->
 						<li><a href="./?chain=<?php echo html($chain)?>&page=create">Create Stream</a></li>
 						<li><a href="./?chain=<?php echo html($chain)?>&page=publish">Publish</a></li>
 						<li><a href="./?chain=<?php echo html($chain)?>&page=view">View Streams</a></li>
