@@ -38,17 +38,18 @@
 			<nav class="navbar navbar-default">
 				<div id="navbar" class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
-						<li><a href="./?chain=<?php echo html($chain)?>">Node</a></li>
-						<li><a href="./?chain=<?php echo html($chain)?>&page=permissions">Permissions</a></li>
-						<li><a href="./?chain=<?php echo html($chain)?>&page=assets">Assets</a></li>
-						<li><a href="./?chain=<?php echo html($chain)?>&page=issue" class="pair-first">Issue Asset</a></li>
-						<li><a href="./?chain=<?php echo html($chain)?>&page=update" class="pair-second">| Update</a></li>
-						<li><a href="./?chain=<?php echo html($chain)?>&page=send">Send</a></li>
+						<li><a class="<?php echo $_GET['page'] == null ? 'active': ''?>" href="./?chain=<?php echo html($chain)?>">Node</a></li>
+						<li><a class="<?php echo $_GET['page'] == 'permissions' ? 'active': ''?>" href="./?chain=<?php echo html($chain)?>&page=permissions">Permissions</a></li>
+						<li><a class="<?php echo $_GET['page'] == 'assets' ? 'active': ''?>" href="./?chain=<?php echo html($chain)?>&page=assets">Assets</a></li>
+						<li><a class="<?php echo $_GET['page'] == 'issue' ? 'active': ''?>" href="./?chain=<?php echo html($chain)?>&page=issue">Issue Asset</a></li>
+						<li><a class="<?php echo $_GET['page'] == 'update' ? 'active': ''?>" href="./?chain=<?php echo html($chain)?>&page=update">Update Asset</a></li>
+						<li><a class="<?php echo $_GET['page'] == 'send' ? 'active': ''?>" href="./?chain=<?php echo html($chain)?>&page=send">Send</a></li>
 						<!--li><a href="./?chain=<?php echo html($chain)?>&page=offer" class="pair-first">Create Offer</a></li>
 						<li><a href="./?chain=<?php echo html($chain)?>&page=accept" class="pair-second">| Accept</a></li-->
-						<li><a href="./?chain=<?php echo html($chain)?>&page=create">Create Stream</a></li>
-						<li><a href="./?chain=<?php echo html($chain)?>&page=publish">Publish</a></li>
-						<li><a href="./?chain=<?php echo html($chain)?>&page=view">View Streams</a></li>
+						<li><a class="<?php echo $_GET['page'] == 'create' ? 'active': ''?>" href="./?chain=<?php echo html($chain)?>&page=create">Create Stream</a></li>
+						<li><a class="<?php echo $_GET['page'] == 'publish' ? 'active': ''?>" href="./?chain=<?php echo html($chain)?>&page=publish">Publish</a></li>
+						<li><a class="<?php echo $_GET['page'] == 'keys' ? 'active': ''?>" href="./?chain=<?php echo html($chain)?>&page=keys">View Stream Keys</a></li>
+						<li><a class="<?php echo $_GET['page'] == 'view' ? 'active': ''?>" href="./?chain=<?php echo html($chain)?>&page=view">View Stream Transactions</a></li>
 					</ul>
 				</div>
 			</nav>
@@ -68,6 +69,7 @@
 			case 'create':
 			case 'publish':
 			case 'view':
+			case 'keys':
 			case 'asset-file':
 				require_once 'page-'.$_GET['page'].'.php';
 				break;

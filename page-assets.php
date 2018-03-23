@@ -11,6 +11,11 @@
 				output_success_text('Successfully subscribed to asset: '.$asset['name']);
 				$subscribed=true;
 			}
+		} else if (@$_POST['unsubscribe_'.$asset['issuetxid']]) {
+			if (no_displayed_error_result($result, multichain('unsubscribe', $asset['issuetxid']))) {
+				output_success_text('Successfully unsubscribed to asset: '.$asset['name']);
+				$unsubscribed=true;
+			}
 		}
 			
 		if (@$_GET['asset']==$asset['issuetxid']) {
@@ -18,7 +23,8 @@
 		}
 	}
 
-	if ($subscribed) {
+	// Reload asset list
+	if ($subscribed || $unsubscribed) {
 		no_displayed_error_result($listassets, multichain('listassets', '*', true)); //reload
 	}
 ?>
@@ -44,7 +50,10 @@
 <?php 
 										if ($asset['subscribed']) {
 ?>
-											<a href="./?chain=<?php echo html($_GET['chain'])?>&page=<?php echo html($_GET['page'])?>&asset=<?php echo html($asset['issuetxid'])?>"><?php echo html($asset['name'])?></a>
+											<a href="./?chain=<?php echo html($_GET['chain'])?>&page=<?php echo html($_GET['page'])?>&asset=<?php echo html($asset['issuetxid'])?>">
+												<?php echo html($asset['name'])?>
+											</a>
+											&nbsp; <input class="btn btn-default btn-xs" type="submit" name="unsubscribe_<?php echo html($asset['issuetxid'])?>" value="Unsubscribe">
 <?php
 										} else {
 ?>
