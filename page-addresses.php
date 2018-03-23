@@ -167,6 +167,15 @@
                       </tr>
 <?php
                     }
+                    if ($transaction['data'][0]) {
+?>
+                      <tr>
+                        <th style="width:30%;">Data</th>
+                        <td><?php echo html(pack('H*', $transaction['data'][0]))?></td>
+                      </tr>
+<?php
+                    }
+
                   } else if ($transaction['issue']) { // ASSET ISSUE
                     $issue = $transaction['issue'];
 ?>
