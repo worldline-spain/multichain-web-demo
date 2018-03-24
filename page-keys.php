@@ -37,9 +37,7 @@
 <?php
 				for ($subscribed=1; $subscribed>=0; $subscribed--) { // SUBSCRIBED 1 => SUBSCRIBED STREAMS; SUBSCRIBED 0 => UNSUBSCRIBED STREAMS
 ?>
-
 					<h3><?php echo $subscribed ? 'Subscribed streams' : 'Other streams'?></h3>
-			
 <?php
 					foreach ($liststreams as $stream) {
 						if ($stream['subscribed']==$subscribed) {
@@ -52,20 +50,20 @@
 ?>	
 										<td>
 											<?php echo html($stream['name'])?>
-											&nbsp; <input class="btn btn-default btn-xs" type="submit" name="unsubscribe_<?php echo html($stream['createtxid'])?>" value="Unsubscribe<?php echo $suffix?>">
+											&nbsp; <input class="btn btn-default btn-xs" type="submit" name="unsubscribe_<?php echo html($stream['createtxid'])?>" value="Unsubscribe">
 										</td>
 <?php
-								} else {
-									$parts=explode('-', $stream['streamref']);
-									if (is_numeric($parts[0])) {
-										$suffix=' ('.($getinfo['blocks']-$parts[0]+1).' blocks)';
 									} else {
-										$suffix='';
-									}
+										$parts=explode('-', $stream['streamref']);
+										if (is_numeric($parts[0])) {
+											$suffix=' ('.($getinfo['blocks']-$parts[0]+1).' blocks)';
+										} else {
+											$suffix='';
+										}
 ?>	
-									<td><?php echo html($stream['name'])?> &nbsp; <input class="btn btn-default btn-xs" type="submit" name="subscribe_<?php echo html($stream['createtxid'])?>" value="Subscribe<?php echo $suffix?>"></td>
+										<td><?php echo html($stream['name'])?> &nbsp; <input class="btn btn-default btn-xs" type="submit" name="subscribe_<?php echo html($stream['createtxid'])?>" value="Subscribe"></td>
 <?php
-								}
+									}
 ?>
 								</tr>
 								<tr>
@@ -106,15 +104,13 @@
 <?php
 	
 		if (isset($_GET['keys'])) { // List of publications by an specific key
-			$success=no_displayed_error_result($items, multichain('liststreamkeys', $_GET['keys']));
-			//$success=$success && no_displayed_error_result($keysinfo, multichain('liststreampublishers', $_GET['stream-name']));
+			$success=no_displayed_error_result($items, multichain('liststreamkeys', $_GET['keys'], '*', true));
 		} else if (isset($_GET['publishers'])) { // List of publications by an specific key
-			$success=no_displayed_error_result($items, multichain('liststreampublishers', $_GET['publishers']));
+			$success=no_displayed_error_result($items, multichain('liststreampublishers', $_GET['publishers'], '*', true));
 		}
 		
 		if ($success) {
 ?>
-			<?php echo html($items)?>
 			<div class="col-sm-8">
 				<h3>Stream <?php echo html($viewstream['name'])?> &ndash; <?php echo count($items)?> of <?php echo count($items)?> <?php echo count($items) == 1 ? 'key' : 'keys'?></h3>
 <?php
@@ -149,13 +145,28 @@
 							</tr>
 <?php	
 						}
-?>
+?>						
 						<tr>
 							<th>Items</th>
 							<td>
 								<?php echo $item['items']?>
 							</td>
 						</tr>
+
+<?php
+						if (isset($item['first']['data'])) {
+?>						
+							<tr>
+								<th>
+									Last data
+								</th>
+								<td>
+									<?php echo html(pack('H*', $item['first']['data']))?>
+								</td>
+							</tr>
+<?php	
+						}
+?>
 					</table>
 <?php
 				}

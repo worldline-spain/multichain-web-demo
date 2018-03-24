@@ -1,4 +1,8 @@
 .nav > li > a.pair-first {padding-right:5px;}
+.nav > li > a.pair-second {padding-left:0;}
+.nav > li.pair-first {padding-right:5px;}
+.nav > li.pair-second {padding-left:1;}
+.nav > li.pair-first.pair-second {color: #cccccc; line-height: 46px;}
 .nav > li > a.active { color: #888888};
 .bg-success {background-color: #ccffbb; border:1px solid #cccccc;}
 .bg-danger {background-color: #ffbbcc; border:1px solid #cccccc;}

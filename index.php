@@ -38,19 +38,30 @@
 			<nav class="navbar navbar-default">
 				<div id="navbar" class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
-						<li><a class="<?php echo $_GET['page'] == null ? 'active': ''?>" href="./?chain=<?php echo html($chain)?>">Node</a></li>
-						<li><a class="<?php echo $_GET['page'] == 'addresses' ? 'active': ''?>" href="./?chain=<?php echo html($chain)?>&page=addresses">Addresses</a></li>
-						<li><a class="<?php echo $_GET['page'] == 'permissions' ? 'active': ''?>" href="./?chain=<?php echo html($chain)?>&page=permissions">Permissions</a></li>
-						<li><a class="<?php echo $_GET['page'] == 'assets' ? 'active': ''?>" href="./?chain=<?php echo html($chain)?>&page=assets">Assets</a></li>
-						<li><a class="<?php echo $_GET['page'] == 'issue' ? 'active': ''?>" href="./?chain=<?php echo html($chain)?>&page=issue">Issue Asset</a></li>
-						<li><a class="<?php echo $_GET['page'] == 'update' ? 'active': ''?>" href="./?chain=<?php echo html($chain)?>&page=update">Update Asset</a></li>
-						<li><a class="<?php echo $_GET['page'] == 'send' ? 'active': ''?>" href="./?chain=<?php echo html($chain)?>&page=send">Send</a></li>
+						
+						<li><a class="pair-first <?php echo $_GET['page'] == null ? 'active': ''?>" href="./?chain=<?php echo html($chain)?>">Node</a></li>
+						<li class="pair-first pair-second"> | </li>
+						<li><a class="pair-first pair-second <?php echo $_GET['page'] == 'addresses' ? 'active': ''?>" href="./?chain=<?php echo html($chain)?>&page=addresses">Addresses</a></li>
+						<li class="pair-first pair-second"> | </li>
+						<li><a class="pair-second <?php echo $_GET['page'] == 'permissions' ? 'active': ''?>" href="./?chain=<?php echo html($chain)?>&page=permissions">Permissions</a></li>
+
+						<li><a class="pair-first <?php echo $_GET['page'] == 'assets' ? 'active': ''?>" href="./?chain=<?php echo html($chain)?>&page=assets">Assets</a></li>
+						<li class="pair-first pair-second"> | </li>
+						<li><a class="pair-first pair-second <?php echo $_GET['page'] == 'issue' ? 'active': ''?>" href="./?chain=<?php echo html($chain)?>&page=issue">Issue Asset</a></li>
+						<li class="pair-first pair-second"> | </li>
+						<li><a class="pair-second <?php echo $_GET['page'] == 'update' ? 'active': ''?>" href="./?chain=<?php echo html($chain)?>&page=update">Update Asset</a></li>
+						
 						<!--li><a href="./?chain=<?php echo html($chain)?>&page=offer" class="pair-first">Create Offer</a></li>
 						<li><a href="./?chain=<?php echo html($chain)?>&page=accept" class="pair-second">| Accept</a></li-->
-						<li><a class="<?php echo $_GET['page'] == 'create' ? 'active': ''?>" href="./?chain=<?php echo html($chain)?>&page=create">Create Stream</a></li>
+						
+						<li><a class="pair-first <?php echo $_GET['page'] == 'create' ? 'active': ''?>" href="./?chain=<?php echo html($chain)?>&page=create">Create Stream</a></li>
+						<li class="pair-first pair-second"> | </li>
+						<li><a class="pair-first pair-second <?php echo $_GET['page'] == 'keys' ? 'active': ''?>" href="./?chain=<?php echo html($chain)?>&page=keys">Stream Keys</a></li>
+						<li class="pair-first pair-second"> | </li>
+						<li><a class="pair-second <?php echo $_GET['page'] == 'view' ? 'active': ''?>" href="./?chain=<?php echo html($chain)?>&page=view">Stream Transactions</a></li>
+						
+						<li><a class="<?php echo $_GET['page'] == 'send' ? 'active': ''?>" href="./?chain=<?php echo html($chain)?>&page=send">Send</a></li>
 						<li><a class="<?php echo $_GET['page'] == 'publish' ? 'active': ''?>" href="./?chain=<?php echo html($chain)?>&page=publish">Publish</a></li>
-						<li><a class="<?php echo $_GET['page'] == 'keys' ? 'active': ''?>" href="./?chain=<?php echo html($chain)?>&page=keys">Stream Keys</a></li>
-						<li><a class="<?php echo $_GET['page'] == 'view' ? 'active': ''?>" href="./?chain=<?php echo html($chain)?>&page=view">Stream Transactions</a></li>
 					</ul>
 				</div>
 			</nav>
