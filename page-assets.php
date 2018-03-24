@@ -183,6 +183,16 @@
 <?php
 									}
 ?>	
+<?php
+									if ($transaction['data']) {
+?>
+										<tr>
+											<th>Data</th>
+											<td><?php echo html(pack('H*', $transaction['data'][0]))?></td>
+										</tr>
+<?php
+									}
+?>	
 									<tr>
 										<th>Received</th>
 										<td><?php echo gmdate('Y-m-d H:i:s', $transaction['blocktime'])?> GMT<?php echo isset($transaction['blocktime']) ? ' (confirmed)' : '-'?></td>

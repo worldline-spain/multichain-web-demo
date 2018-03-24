@@ -117,14 +117,16 @@
               <table class="table table-bordered table-striped table-break-words">
                 <tr>
                   <th style="width:30%;">From</th>
-                  <td><?php echo html($transaction['myaddresses'][0])?></td>
+                  <td><?php echo format_address_html($transaction['myaddresses'][0], in_array($transaction['myaddresses'][0], $addressmine), $labels)?></td>
+                  <!--td><?php //echo html($transaction['myaddresses'][0])?></td-->
                 </tr>
 <?php 
                 if ($transaction['addresses'][0]) { // SHOWING TRANSACTIONS FOR ADDRESS ON QUERY PARAMS
 ?>
                   <tr>
                     <th style="width:30%;">To</th>
-                    <td><?php echo html($transaction['addresses'][0])?></td>
+                    <td><?php echo format_address_html($transaction['addresses'][0], in_array($transaction['myaddresses'][0], $addressmine), $labels)?></td>
+                    <!--td><?php //echo html($transaction['addresses'][0])?></td-->
                   </tr>
 <?php 
                 }
