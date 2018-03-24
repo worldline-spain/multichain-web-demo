@@ -154,10 +154,9 @@
 <?php 
 		if (isset($_GET['asset'])) {
 			$success=no_displayed_error_result($transactionList, multichain('listassettransactions', $viewasset['issuetxid'], false, const_max_retrieve_items));
+			$transactionList = array_reverse($transactionList); // Sorting newest first
 		} else if (isset($_GET['address'])) {
 			$success=no_displayed_error_result($addressBalance, multichain('getaddressbalances', $_GET['address'], const_max_retrieve_items));
-		} else if (false) {
-			//listassettransactions
 		}
 
 		if ($success) {
@@ -168,43 +167,50 @@
 					<form method="post" action="./?chain=<?php echo html($_GET['chain'])?>&page=<?php echo html($_GET['page'])?>">
 						<h3>Asset <?php echo html($viewasset['name'])?> &ndash; <?php echo count($transactionList)?> <?php echo count($transactionList) == 1 ? 'item' : 'items'?> transactions</h3>
 <?php
-							foreach($transactionList as $transaction) {
+						foreach($transactionList as $transaction) {
 ?>
-								<table class="table table-bordered table-condensed table-break-words table-striped">
+							<table class="table table-bordered table-condensed table-break-words table-striped">
 <?php
-									foreach($transaction['addresses'] as $address => $quantity) {
+								foreach($transaction['addresses'] as $address => $quantity) {
 ?>
-										<tr>
-											<th style="width:17%;">Address</th>
-											<td><a href="./?chain=<?php echo html($_GET['chain'])?>&page=<?php echo html($_GET['page'])?>&address=<?php echo html($address)?>"><?php echo html($address)?></a></td>
-											<th style="width:17%;">Quantity</th>
-											<td style="width:17%;"><?php echo $quantity?></td>
-										</tr>
-<?php
-									}
-?>	
-<?php
-									if ($transaction['data']) {
-?>
-										<tr>
-											<th>Data</th>
-											<td><?php echo html(pack('H*', $transaction['data'][0]))?></td>
-										</tr>
-<?php
-									}
-?>	
 									<tr>
-										<th>Received</th>
-										<td><?php echo gmdate('Y-m-d H:i:s', $transaction['blocktime'])?> GMT<?php echo isset($transaction['blocktime']) ? ' (confirmed)' : '-'?></td>
+										<th style="width:17%;">Address</th>
+										<td><a href="./?chain=<?php echo html($_GET['chain'])?>&page=<?php echo html($_GET['page'])?>&address=<?php echo html($address)?>"><?php echo html($address)?></a></td>
+										<th style="width:17%;">Quantity</th>
+										<td style="width:17%;"><?php echo $quantity?></td>
 									</tr>
-								</table>
 <?php
-							}
+								}
+?>	
+<?php
+								if ($transaction['data']) {
+?>
+									<tr>
+										<th>Data</th>
+										<td><?php echo html(pack('H*', $transaction['data'][0]))?></td>
+									</tr>
+<?php
+								}
+?>	
+								<tr>
+									<th>Received</th>
+									<td><?php echo gmdate('Y-m-d H:i:s', $transaction['blocktime'])?> GMT<?php echo isset($transaction['blocktime']) ? ' (confirmed)' : '-'?></td>
+								</tr>
+							</table>
+<?php
+						}
+?>
+					</form>
+				</div>
+<?php
 			} else if (isset($_GET['address'])) { //SHOWING ADDRESS BALANCES
 ?>
 				<div class="col-sm-8">
-					<form method="post" action="./?chain=<?php echo html($_GET['chain'])?>&page=<?php echo html($_GET['page'])?>">
-						<h3>Address <?php echo html($_GET['address'])?> &ndash; asset balances</h3>
+<?php
+					if (count($transactionList) > 0) {
+?>					
+						<form method="post" action="./?chain=<?php echo html($_GET['chain'])?>&page=<?php echo html($_GET['page'])?>">
+							<h3>Address <?php echo html($_GET['address'])?> &ndash; asset balances</h3>
 <?php
 							foreach($addressBalance as $assetBalance) {
 ?>
@@ -220,9 +226,18 @@
 								</table>
 <?php
 							}
+?>
+						</form>
+<?php
+					} else {
+?>
+						<h4>This address has no assets.</h4>
+<?php
+					}
+?>
+				</div>
+<?php
 			}
 		}
 ?>
-				</form>
-			</div>
 	</div>
