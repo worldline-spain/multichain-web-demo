@@ -9,3 +9,4 @@
 .highlight {padding:0.5em; background-color:#dff0d8;}
 .table-break-words {table-layout:fixed; width:100%;}
 .td-break-words {word-wrap: break-word;}
+.th-break-words {word-wrap: break-word;}

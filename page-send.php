@@ -75,14 +75,14 @@
 								if (isset($label)) {
 ?>
 									<tr>
-										<th style="width:25%;">Label</th>
-										<td><?php echo html($label)?></td>
+										<th class="th-break-words">Label</th>
+										<td class="td-break-words"><?php echo html($label)?></td>
 									</tr>
 <?php
 								}
 ?>
 								<tr>
-									<th style="width:20%;">Address</th>
+									<th class="th-break-words">Address</th>
 									<td class="td-break-words small"><?php echo html($address)?></td>
 								</tr>
 <?php
@@ -98,8 +98,8 @@
 									}
 ?>
 									<tr>
-										<th><?php echo html($balance['name'])?></th>
-										<td><?php echo html($unlockedqty)?><?php echo ($lockedqty>0) ? (' ('.$lockedqty.' locked)') : ''?></td>
+										<th class="th-break-words"><?php echo html($balance['name'])?></th>
+										<td class="td-break-words"><?php echo html($unlockedqty)?><?php echo ($lockedqty>0) ? (' ('.$lockedqty.' locked)') : ''?></td>
 									</tr>
 <?php
 								}
