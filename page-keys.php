@@ -161,7 +161,7 @@
 									Last data
 								</th>
 								<td>
-									<?php echo html(pack('H*', $item['first']['data']))?>
+									<?php echo html(pack('H*', $item['last']['data']))?>
 								</td>
 							</tr>
 <?php	
