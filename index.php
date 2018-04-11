@@ -70,6 +70,7 @@
 		set_multichain_chain($config[$chain]);
 		
 		switch (@$_GET['page']) {
+			case 'label':
 			case 'addresses':
 			case 'permissions':
 			case 'assets':
